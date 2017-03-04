@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace TechJobsConsole
 {
     class Program
@@ -118,7 +119,42 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("printJobs is not implemented yet");
+            /* Implement this method. It should print out something like this:
+
+                *****
+                position type: Data Scientist / Business Intelligence
+                name: Sr. IT Analyst (Data/BI)
+                employer: Bull Moose Industries
+                location: Saint Louis
+                core competency: Statistical Analysis
+                *****
+                If there are no results, it should print an appropriate messages.
+
+                To do this, you'll need to iterate over a List of jobs. Each job is itself a Dictionary. 
+                While you can get each of the items out of the dictionary using the known keys ("employer", 
+                "location", etc), think instead about creating a nested loop to loop over each dictionary. 
+                You'll want to use the Dictionary.Keys property to do this. If a new field is added to the
+                job records, this approach will print out the new field without any updates to PrintJobs.
+             */
+
+            string section = "----------";
+            if (someJobs.Count!=0)
+            {
+                foreach (Dictionary<string, string> jobs in someJobs)
+                {
+                    Console.WriteLine(section);
+                    foreach (KeyValuePair<string, string> field in jobs)
+                    {
+                        Console.WriteLine(string.Format("{0}: {1}", field.Key, field.Value));
+                    }
+                }
+                Console.WriteLine(section);
+            }
+            else
+            {
+                Console.WriteLine("No jobs to list.");
+            }
+
         }
     }
 }
