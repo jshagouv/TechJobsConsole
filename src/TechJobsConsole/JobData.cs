@@ -63,17 +63,17 @@ namespace TechJobsConsole
             LoadData();
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+
             foreach (Dictionary<string, string> row in AllJobs)
             {
                 foreach (KeyValuePair<string, string> field in row)
                 {
-                    if (field.Value.Contains(value))
+                    if (field.Value.ToLower().Contains(value.ToLower()))
                     {
                         if (!jobs.Contains(row))
                         {
                             jobs.Add(row);
-                        }
-                        
+                        }                      
                     }
                 }
             }
